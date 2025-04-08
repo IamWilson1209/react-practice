@@ -1,0 +1,10 @@
+.image-display {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.image-size {
+  height: 48px;
+  width: 48px;
+}

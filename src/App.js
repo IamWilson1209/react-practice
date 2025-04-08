@@ -7,8 +7,11 @@ import Checkbox from './Questions/Checkbox';
 import ArrayManipulation from './Questions/ArrayManipulation';
 import Basic from './Questions/Basic';
 import ErrorMessage from './Questions/ErrorMessage';
+import WordGame from './Questions/WordGame';
+import QuickTest from './Questions/QuickTest';
+import FormProps from './Questions/FormProps';
 
-// 題目集中管理 (未來擴展只需修改這裡)
+// 題目集中管理 (未來只需修改這裡)
 const questionRoutes = [
   { path: '/basic', component: Basic, name: 'Basic' },
   { path: '/first', component: FilterSearchItems, name: 'Filter Search' },
@@ -21,7 +24,10 @@ const questionRoutes = [
     component: ArrayManipulation,
     name: 'Array Manipulation',
   },
-  { path: '/oop', component: ErrorMessage, name: 'OOP' },
+  { path: '/errormessage', component: ErrorMessage, name: 'Error Message' },
+  { path: '/wordgame', component: WordGame, name: 'Word Game' },
+  { path: '/quicktest', component: QuickTest, name: 'Quick Test' },
+  { path: '/formprops', component: FormProps, name: 'Form Props' },
 ];
 
 function App() {

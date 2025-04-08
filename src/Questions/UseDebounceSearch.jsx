@@ -11,7 +11,7 @@ const useDebounce = (text, delay) => {
       setDebounce(text);
     }, delay);
 
-    /* 記得清除 */
+    /* 返回給 React，下一次自動清除 */
     return () => {
       clearTimeout(timer);
     };

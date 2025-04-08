@@ -1,4 +1,5 @@
 import React from 'react';
+import ArrayManipulation from './ArrayManipulation';
 
 const Basic = () => {
   /* 
@@ -13,7 +14,7 @@ const Basic = () => {
   console.log('getSecret(): ', getSecret());
 
   /* 
-    2. Deep Clone 物件 
+    2. Shallow Clone 物件 
   */
   let obj = { a: 1, b: 2 };
   console.log('origin obj: ', obj);
@@ -23,6 +24,15 @@ const Basic = () => {
 
   let obj3 = Object.assign({ d: 4 }, obj);
   console.log('obj3: ', obj3);
+
+  /* Deep Clone */
+
+  // function、HTML 的元素，這些是無法序列化的
+  let obj4 = JSON.parse(JSON.stringify(obj));
+  console.log(obj4);
+
+  let obj5 = structuredClone(obj);
+  console.log(obj5);
 
   /* 
     3. 數有多少 a, e, i, o, u
@@ -114,6 +124,41 @@ const Basic = () => {
 
   person.printInfo();
 
+  /* 陣列平坦化，原生JS */
+  let array = [1, 2, , [3, [4, 5, [6, 7, [8]]]]];
+  console.log(array.flat(Infinity));
+
+  /* 遞迴 */
+  function flatten(arr, output = []) {
+    for (const val of arr) {
+      if (Array.isArray(val)) {
+        flatten(val, output);
+      } else {
+        output.push(val); // 是元素就push入陣列
+      }
+    }
+    return output;
+  }
+
+  /* reduce */
+  function reduceFlatten(arr) {
+    arr.reduce(
+      (acc, cur) =>
+        Array.isArray(cur) ? [...acc, ...reduceFlatten(cur)] : [...acc, cur],
+      []
+    );
+  }
+  const flattenArray = flatten(array);
+  console.log(flattenArray);
+
+  /* array 去重複 */
+  const dup = [1, 1, 2, 2, 3];
+  function removeDup(arr) {
+    return Array.from(new Set(arr));
+  }
+  function removeDup2(arr) {
+    return [...new Set(array)];
+  }
   return <h2>Basic</h2>;
 };
 
