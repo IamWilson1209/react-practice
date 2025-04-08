@@ -63,16 +63,24 @@ const WordGame = () => {
       <h2>User: </h2>
       <img src={userImageUrl} alt="no result" />
       <div className="image-display">
+        {/* JSON */}
         {userList.map((newUser, index) => {
+          console.log('newUser: ', newUser);
+          console.log('newUser type: ', typeof newUser.results[0].gender);
           return (
-            <img
-              className="image-size"
-              key={index}
-              src={newUser.results[0].picture.thumbnail}
-              alt={'no'}
-            />
+            <>
+              <span>{newUser.results[0].gender}</span>
+              <img
+                className="image-size"
+                key={index}
+                src={newUser.results[0].picture.thumbnail}
+                alt={'no'}
+              />
+            </>
           );
         })}
+        {/* stringity */}
+        <pre>{user}</pre>
       </div>
     </div>
   );
