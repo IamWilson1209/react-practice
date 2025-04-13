@@ -54,12 +54,6 @@ function PhoneBookForm({ addEntryCallback }) {
       [name]: value, // 更新對應的name的欄位
     }));
 
-    // setFormData(prev => {
-    //   const newData = { ...prev };
-    //   newData[name] = value; // 直接透過變數賦值
-    //   return newData;
-    // });
-
     setError((prev) => ({ ...prev, [name]: '' }));
   };
 
